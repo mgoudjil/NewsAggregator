@@ -1,0 +1,77 @@
+version: "3.2"
+
+services:
+  # 1. Python FAST API
+  web:
+    build:
+      context: ./fastApi # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+    depends_on:
+      - mariadb
+      - redis
+    environment:
+      REDIS_URL: redis:6379
+      MARIADB_URL: mariadb:3306
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - redis_net
+      - mariadb_net
+
+  # 2. Python  New Curator
+  news_curator:
+    build:
+      context: ./news_curator # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - mariadb
+      - redis2
+    environment:
+      MARIADB_URL: mariadb:3306
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - mariadb_net
+      - redis_net_vote
+
+  # 3. Redis
+  redis:
+    image: "redis:alpine" # Use a public Redis image to build the redis service
+    restart: always
+    networks:
+      - redis_net
+    volumes:
+      - ./redis/data:/data
+
+  # 4. Redis Instance 2
+  redis2:
+    image: "redis:alpine" # Use a public Redis image to build the redis service
+    restart: always
+    networks:
+      - redis_net_vote
+    volumes:
+      - ./redis2/data:/data
+
+  # 5. Mariadb
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - ./mariadb/data:/var/lib/mysql
+    networks:
+      - mariadb_net
+
+  # 6. Adminer Service
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    network:
+      - mariadb_net
+
+  networks:
+    mariadb_net:
+    redis_net:

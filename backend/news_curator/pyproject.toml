@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "news_curator"
+version = "0.1.0"
+description = ""
+authors = ["Mohand Goudjil <36730166+mgoudjil@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+scrapy = "^1.7"
+flask = "^1.1"
+redis = "^3.3"
+newspaper3k = "^0.2.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

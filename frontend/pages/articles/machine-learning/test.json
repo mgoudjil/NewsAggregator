@@ -1,0 +1,9 @@
+{
+  "articlePicture": "Quantum",
+  "title": "Quantum",
+  "subtitle": "Fantastic Subject",
+  "stepper": ["Overview", "2", "3"],
+  "html": {
+    "1": []
+  }
+}

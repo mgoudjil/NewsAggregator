@@ -1,0 +1,20 @@
+
+0. Traefiek
+    * Reverse Proxy
+
+1. FastApi
+    * High Performance python Rest API Framework
+    * API gateway
+
+2. NewsCurator
+    * Python Script
+    * Scrapping & Cleaning news
+
+2. Mariadb
+    * Database to store all news info
+    * +Adminer to manage database
+
+3. Redis
+    * In-memory data structure store to store new votes
+
+
