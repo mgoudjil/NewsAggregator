@@ -4,7 +4,7 @@
 	<img
 		width="300"
 		alt="DisruptKnowledge"
-		#src="https://github.com/mgoudjil/blog/blob/dev/listen-music_52422-118.jpg?raw=true">
+		src="https://github.com/mgoudjil/blog/blob/dev/listen-music_52422-118.jpg?raw=true">
 </h1>
 
 <h3 align="center">
