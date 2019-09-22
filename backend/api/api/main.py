@@ -3,6 +3,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+# Connect to Mariadb
+# Connect to Redis
+# Connect to Redis2
+
 
 @app.get("/")
 def read_root():

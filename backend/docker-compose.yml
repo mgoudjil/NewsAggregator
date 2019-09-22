@@ -72,6 +72,6 @@ services:
     network:
       - mariadb_net
 
-  networks:
-    mariadb_net:
-    redis_net:
+networks:
+  mariadb_net:
+  redis_net:

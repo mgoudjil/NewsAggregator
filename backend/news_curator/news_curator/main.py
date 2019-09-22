@@ -25,6 +25,8 @@ def main():
         if isfile(f) and not f.endswith("__init__.py")
     ]
 
+    # GLOBAL FOR
+
     for scraper in scrapers:
         result = getattr(eval(scraper), "main")()
         print(result)
@@ -40,13 +42,6 @@ def main():
     # Get article values
     # Calculate NEW SCORE
     # Add to mariadb & update to "recalculate needed: FALSE"
-
-    #
-    # Sum Votes of an Articles
-    # C
-    # Sum SQLITE VOTES & deletes
-    # Add Votes to mariadb & changed statut to "need calculation"
-    # Get
 
 
 if __name__ == "__main__":
